@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<NoWarn>$(NoWarn);NU1701;CS8632;CS8618;CS8600</NoWarn>
+		<Nullable>enable</Nullable>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>disable</Nullable>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>KryptalisERP</RootNamespace>
+		<AssemblyName>KryptalisERP</AssemblyName>
+		</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <DefineConstants>$(DefineConstants);nullable</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="ClosedXML" Version="0.105.1" />
+		<PackageReference Include="Dapper" Version="2.1.89" />
+		<PackageReference Include="EPPlus" Version="8.7.1" />
+		<PackageReference Include="FastReport.OpenSource" Version="2026.2.8" />
+		<PackageReference Include="FastReport.OpenSource.Export.PdfSimple" Version="2026.2.8" />
+		<PackageReference Include="FastReport.OpenSource.Web" Version="2026.2.8" />
+		<PackageReference Include="LiveChartsCore" Version="2.0.5" />
+		<PackageReference Include="LiveChartsCore.SkiaSharpView.WinForms" Version="2.0.5" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Properties\Settings.Designer.cs">
+	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Settings.settings</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Properties\Settings.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+	  </None>
+	</ItemGroup>
+
+</Project>

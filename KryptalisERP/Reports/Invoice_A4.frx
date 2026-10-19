@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="10/02/2026" ReportInfo.Modified="10/02/2026">
+  <Dictionary>
+    <TableDataSource Name="Invoice" ReferenceName="Invoice" DataType="System.Int32" Enabled="true">
+      <Column Name="DocNumber" DataType="System.String"/>
+      <Column Name="DocDate" DataType="System.String"/>
+      <Column Name="SeriesName" DataType="System.String"/>
+      <Column Name="CompanyName" DataType="System.String"/>
+      <Column Name="CompanyVat" DataType="System.String"/>
+      <Column Name="CompanyAddress" DataType="System.String"/>
+      <Column Name="CompanyCity" DataType="System.String"/>
+      <Column Name="CompanyPhone" DataType="System.String"/>
+      <Column Name="ClientName" DataType="System.String"/>
+      <Column Name="ClientVat" DataType="System.String"/>
+      <Column Name="ClientAddress" DataType="System.String"/>
+      <Column Name="ClientCity" DataType="System.String"/>
+      <Column Name="TotalBeforeDiscount" DataType="System.Decimal"/>
+      <Column Name="TotalVat" DataType="System.Decimal"/>
+      <Column Name="GrandTotal" DataType="System.Decimal"/>
+      <Column Name="MyDataMARK" DataType="System.String"/>
+      <Column Name="MyDataUID" DataType="System.String"/>
+      <Column Name="MyDataQRUrl" DataType="System.String"/>
+    </TableDataSource>
+    <TableDataSource Name="Items" ReferenceName="Items" DataType="System.Int32" Enabled="true">
+      <Column Name="Description" DataType="System.String"/>
+      <Column Name="Qty" DataType="System.Decimal"/>
+      <Column Name="Unit" DataType="System.String"/>
+      <Column Name="UnitPrice" DataType="System.Decimal"/>
+      <Column Name="VatRate" DataType="System.Decimal"/>
+      <Column Name="TotalValue" DataType="System.Decimal"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="210" PaperHeight="297" RawPaperSize="9">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="113.4">
+      <TextObject Name="Title" Width="718.2" Height="37.8" Text="ΤΙΜΟΛΟΓΙΟ ΠΩΛΗΣΗΣ" HorzAlign="Center" Font="Arial, 20pt, style=Bold"/>
+      <TextObject Name="CompanyInfo" Top="47.25" Width="359.1" Height="56.7" Text="[Invoice.CompanyName]&#13;&#10;ΑΦΜ: [Invoice.CompanyVat]&#13;&#10;[Invoice.CompanyAddress], [Invoice.CompanyCity]&#13;&#10;Τηλ: [Invoice.CompanyPhone]" Font="Arial, 10pt"/>
+      <TextObject Name="InvoiceInfo" Left="359.1" Top="47.25" Width="359.1" Height="56.7" Text="Αριθμός: [Invoice.DocNumber]&#13;&#10;Ημερομηνία: [Invoice.DocDate]&#13;&#10;Σειρά: [Invoice.SeriesName]" HorzAlign="Right" Font="Arial, 10pt, style=Bold"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="123.4" Width="718.2" Height="37.8">
+      <TextObject Name="ClientLabel" Width="718.2" Height="18.9" Text="ΣΤΟΙΧΕΙΑ ΠΕΛΑΤΗ" Font="Arial, 11pt, style=Bold"/>
+      <TextObject Name="ClientInfo" Top="18.9" Width="718.2" Height="18.9" Text="Πελάτης: [Invoice.ClientName] | ΑΦΜ: [Invoice.ClientVat] | Διεύθυνση: [Invoice.ClientAddress], [Invoice.ClientCity]" Font="Arial, 10pt"/>
+    </PageHeaderBand>
+    <DataBand Name="ItemsBand" Top="171.2" Width="718.2" Height="18.9" DataSource="Items">
+      <TextObject Name="Desc" Width="284.55" Height="18.9" Text="[Items.Description]" Font="Arial, 9pt"/>
+      <TextObject Name="Qty" Left="284.55" Width="75.6" Height="18.9" Text="[Items.Qty] [Items.Unit]" HorzAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Price" Left="360.15" Width="94.5" Height="18.9" Text="[Items.UnitPrice] €" HorzAlign="Right" Font="Arial, 9pt"/>
+      <TextObject Name="Vat" Left="454.65" Width="75.6" Height="18.9" Text="[Items.VatRate]%" HorzAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="Total" Left="530.25" Width="187.95" Height="18.9" Text="[Items.TotalValue] €" HorzAlign="Right" Font="Arial, 9pt, style=Bold"/>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="200.1" Width="718.2" Height="94.5">
+      <TextObject Name="Totals" Left="415.8" Width="302.4" Height="75.6" Text="Καθαρή Αξία: [Invoice.TotalBeforeDiscount] €&#13;&#10;ΦΠΑ: [Invoice.TotalVat] €&#13;&#10;━━━━━━━━━━━━━━━━━━━━&#13;&#10;ΣΥΝΟΛΟ: [Invoice.GrandTotal] €" HorzAlign="Right" Font="Arial, 11pt, style=Bold"/>
+      <TextObject Name="MyDataInfo" Top="75.6" Width="718.2" Height="18.9" Text="myDATA MARK: [Invoice.MyDataMARK] | UID: [Invoice.MyDataUID]" Font="Arial, 8pt" Fill.Color="LightGray"/>
+    </ReportSummaryBand>
+  </ReportPage>
+</Report>

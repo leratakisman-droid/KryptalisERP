@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="10/02/2026">
+  <Dictionary>
+    <TableDataSource Name="Payment" ReferenceName="Payment" DataType="System.Int32" Enabled="true">
+      <Column Name="DocNumber" DataType="System.String"/>
+      <Column Name="DocDate" DataType="System.String"/>
+      <Column Name="PaymentMethod" DataType="System.String"/>
+      <Column Name="Amount" DataType="System.Decimal"/>
+      <Column Name="ClientName" DataType="System.String"/>
+      <Column Name="ClientVat" DataType="System.String"/>
+      <Column Name="Description" DataType="System.String"/>
+      <Column Name="Reference" DataType="System.String"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="148" PaperHeight="210" RawPaperSize="11">
+    <ReportTitleBand Name="ReportTitle1" Width="529.2" Height="75.6">
+      <TextObject Name="Title" Width="529.2" Height="28.35" Text="ΑΠΟΔΕΙΞΗ ΠΛΗΡΩΜΗΣ" HorzAlign="Center" Font="Arial, 16pt, style=Bold"/>
+      <TextObject Name="DocInfo" Top="37.8" Width="529.2" Height="18.9" Text="Αριθμός: [Payment.DocNumber] | Ημερομηνία: [Payment.DocDate]" HorzAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Method" Top="56.7" Width="529.2" Height="18.9" Text="Τρόπος Πληρωμής: [Payment.PaymentMethod]" HorzAlign="Center" Font="Arial, 11pt, style=Bold"/>
+    </ReportTitleBand>
+    <DataBand Name="DataBand1" Top="85.6" Width="529.2" Height="94.5" DataSource="Payment">
+      <TextObject Name="Client" Width="529.2" Height="18.9" Text="Πελάτης: [Payment.ClientName]" Font="Arial, 11pt, style=Bold"/>
+      <TextObject Name="Vat" Top="18.9" Width="529.2" Height="18.9" Text="ΑΦΜ: [Payment.ClientVat]" Font="Arial, 10pt"/>
+      <TextObject Name="Desc" Top="37.8" Width="529.2" Height="18.9" Text="Περιγραφή: [Payment.Description]" Font="Arial, 10pt"/>
+      <TextObject Name="Ref" Top="56.7" Width="529.2" Height="18.9" Text="Αναφορά: [Payment.Reference]" Font="Arial, 9pt"/>
+      <TextObject Name="Amount" Top="75.6" Width="529.2" Height="18.9" Text="ΠΟΣΟ: [Payment.Amount] €" HorzAlign="Center" Font="Arial, 14pt, style=Bold" TextColor="DarkGreen"/>
+    </DataBand>
+  </ReportPage>
+</Report>

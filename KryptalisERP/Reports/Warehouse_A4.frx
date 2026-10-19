@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="10/02/2026">
+  <Dictionary>
+    <TableDataSource Name="Warehouse" ReferenceName="Warehouse" DataType="System.Int32" Enabled="true">
+      <Column Name="DocNumber" DataType="System.String"/>
+      <Column Name="DocDate" DataType="System.String"/>
+      <Column Name="WarehouseName" DataType="System.String"/>
+      <Column Name="ClientName" DataType="System.String"/>
+      <Column Name="ClientAddress" DataType="System.String"/>
+      <Column Name="ClientCity" DataType="System.String"/>
+      <Column Name="ClientPhone" DataType="System.String"/>
+      <Column Name="TransportVehicle" DataType="System.String"/>
+    </TableDataSource>
+    <TableDataSource Name="WarehouseItems" ReferenceName="WarehouseItems" DataType="System.Int32" Enabled="true">
+      <Column Name="ItemCode" DataType="System.String"/>
+      <Column Name="Description" DataType="System.String"/>
+      <Column Name="Qty" DataType="System.Decimal"/>
+      <Column Name="Unit" DataType="System.String"/>
+      <Column Name="WarehouseFrom" DataType="System.String"/>
+      <Column Name="WarehouseTo" DataType="System.String"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="210" PaperHeight="297" RawPaperSize="9">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="94.5">
+      <TextObject Name="Title" Width="718.2" Height="28.35" Text="ΔΕΛΤΙΟ ΑΠΟΣΤΟΛΗΣ / ΚΙΝΗΣΗ ΑΠΟΘΗΚΗΣ" HorzAlign="Center" Font="Arial, 18pt, style=Bold"/>
+      <TextObject Name="DocInfo" Top="37.8" Width="359.1" Height="18.9" Text="Αριθμός: [Warehouse.DocNumber]&#13;&#10;Ημερομηνία: [Warehouse.DocDate]" Font="Arial, 10pt"/>
+      <TextObject Name="WarehouseInfo" Left="359.1" Top="37.8" Width="359.1" Height="18.9" Text="Αποθήκη: [Warehouse.WarehouseName]" HorzAlign="Right" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Transport" Top="66.15" Width="718.2" Height="18.9" Text="Μέσο Μεταφοράς: [Warehouse.TransportVehicle]" Font="Arial, 10pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="104.5" Width="718.2" Height="56.7">
+      <TextObject Name="ClientLabel" Width="718.2" Height="18.9" Text="ΣΤΟΙΧΕΙΑ ΠΑΡΑΛΗΠΤΗ" Font="Arial, 11pt, style=Bold"/>
+      <TextObject Name="ClientInfo" Top="18.9" Width="718.2" Height="37.8" Text="[Warehouse.ClientName]&#13;&#10;[Warehouse.ClientAddress], [Warehouse.ClientCity]&#13;&#10;Τηλ: [Warehouse.ClientPhone]" Font="Arial, 10pt"/>
+    </PageHeaderBand>
+    <DataBand Name="ItemsBand" Top="171.2" Width="718.2" Height="18.9" DataSource="WarehouseItems">
+      <TextObject Name="Code" Width="94.5" Height="18.9" Text="[WarehouseItems.ItemCode]" Font="Arial, 9pt"/>
+      <TextObject Name="Desc" Left="94.5" Width="284.55" Height="18.9" Text="[WarehouseItems.Description]" Font="Arial, 9pt"/>
+      <TextObject Name="Qty" Left="379.05" Width="94.5" Height="18.9" Text="[WarehouseItems.Qty] [WarehouseItems.Unit]" HorzAlign="Center" Font="Arial, 9pt"/>
+      <TextObject Name="From" Left="473.55" Width="122.85" Height="18.9" Text="Από: [WarehouseItems.WarehouseFrom]" Font="Arial, 8pt"/>
+      <TextObject Name="To" Left="596.4" Width="121.8" Height="18.9" Text="Προς: [WarehouseItems.WarehouseTo]" Font="Arial, 8pt"/>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="200.1" Width="718.2" Height="37.8">
+      <TextObject Name="Signatures" Width="718.2" Height="37.8" Text="Υπογραφή Αποστολέα: _______________          Υπογραφή Παραλήπτη: _______________" HorzAlign="Center" Font="Arial, 10pt"/>
+    </ReportSummaryBand>
+  </ReportPage>
+</Report>
